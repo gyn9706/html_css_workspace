@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <mata charset="UTF-8">
+        <title>CSS 기본 선택자3</title>
+        <style>
+            /*일반 구조 연산자*/
+            /*형태 관계 중 첫번째 태그 선택하기*/
+            #test1 p:first-child{
+                background: orange;
+            }
+            /*형태 관계 중 마지막 태그 선택하기*/
+            #test1 *:last-child{ /*test1아래 모든 태그 중 마지막 태그*/
+                background: tomato;
+                color:white
+            }
+            /*형태 관계 중 n번째 태그 선택하기*/ /*숫자n : 배수지정*/
+            #test1 p:nth-child(2n){
+                background: cornflowerblue;
+                color: red;
+            }
+            /*형태 관계 중 뒤에서 n번째 태그 선택하기*/ /*숫자n : 배수지정*/
+            #test1 p:nth-last-child(6){
+                background: beige;
+                color: blueviolet;
+            }
+
+            /*형태 구조 선택자*/
+            /*형태 태그 중 첫번째 p태그 선택하기*/
+            #test2 p:first-of-type{
+                background: yellow;
+                color:olive;
+            }
+
+            /*형태 태그 중 n번째 p태그 선택하기*/
+            #test2 p:nth-of-type(2n){
+                background: coral;
+                color:blue;
+            }
+
+            /*문자 선택자*/
+            /*문단의 첫번째 줄 선택하기*/
+            #test3 p::first-line{ /*범위를 지정할 때, 콜론 두개 ::찍음*/
+                background: lightgoldenrodyellow;
+            }
+            /*각 태그 별 자동 번호 매김 처리하기(번호생성후 rint에 저장)*/
+            #test3 p{
+                counter-increment: rint; 
+            }
+            /*태그 앞 공간 선택하기(p태그 앞에 rint 번호 세기)*/
+            #test3 p:before{
+                content:counter(rint)
+            }
+            /*태그 뒷 공간 선택하기(p태그 뒤에 문자 삽입)*/
+            #test3 p:after{
+                content:"- by yn Class"
+            }
+            /*드레그한 글자 블록 색 변경하기*/
+            #test3 p::selection{ /*신기한 작동 모두 라이브러리임. 라이브러리 많이 알면 프로그램 질이 달라짐!!*/
+                background: lightpink;
+                color:hotpink
+            }
+
+            /*부정 선택자*/
+            #test4 p:not(:nth-child(3n)){
+                background: brown;
+                color:white;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <h1>CSS 기본 선택자3</h1>
+        <hr>
+
+        <h2>일반 구조 연산자</h2>
+        <p>특정 위치에 있는 요소(태그)를 선택할 때 사용한다.</p>
+        <div id="test1">
+            <p>테스트1</p>
+            <p>테스트2</p>
+            <p>테스트3</p>
+            <p>테스트4</p>
+            <p>테스트5</p>
+            <p>테스트6</p>
+        </div>
+        <h2>형태 구조 선택자</h2>
+        <p>특정 위치의 태그를 선택할 때 사용한다</p>
+        <div id="test2">
+            <p>테스트1</p>
+            <p>테스트2</p>
+            <p>테스트3</p>
+            <p>테스트4</p>
+            <p>테스트5</p>
+            <pre>테스트6</pre>
+        </div>
+
+        <h2>문자 선택자</h2>
+        <p>해당 태그 내부의 특정 문자열을 선택하는 방법</p>
+        <div id="test3">
+            <p>
+                국회가 재정의원 과반수의 찬성으로 계임의 해제를 요구한
+                때에는 대통령은 이를 해제하여야 한다. 제 1항의 지시를
+                받은 당해 행정기관은 이에 응하여야 한다. 
+                대통령의 임기가 만료되는 때에는 임기만료 70일 내지 
+                40일 전에 후임자를 선거한다. 대법관은 대법원장의 
+                제정으로 국회의 동의를 얻어 대통령이 임명한다.
+            </p>
+            <p>
+                국회가 재정의원 과반수의 찬성으로 계임의 해제를 요구한
+                때에는 대통령은 이를 해제하여야 한다. 제 1항의 지시를
+                받은 당해 행정기관은 이에 응하여야 한다. 
+                대통령의 임기가 만료되는 때에는 임기만료 70일 내지 
+                40일 전에 후임자를 선거한다. 대법관은 대법원장의 
+                제정으로 국회의 동의를 얻어 대통령이 임명한다.
+            </p>
+        </div>
+
+        <h2>부정 선택자</h2>
+        <p>선택한 요소를 제외한 나머지를 선택하는 선택자이다.</p>
+
+        <div id="test4">
+            <p>테스트1</p>
+            <p>테스트2</p>
+            <p>테스트3</p>
+            <p>테스트4</p>
+            <p>테스트5</p>
+            <p>테스트6</p>
+        </div>
+    </body>
+</html>
